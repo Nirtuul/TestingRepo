@@ -1,0 +1,54 @@
+{
+    "name": "BaseTest",
+    "maps": [
+        {
+            "name": "Movement",
+            "id": "85c53573-49df-4ee1-b875-949d354c00d4",
+            "actions": [
+                {
+                    "name": "Right",
+                    "type": "Button",
+                    "id": "07e4c990-62f6-4a07-bd24-5b9335cb6dea",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Left",
+                    "type": "Button",
+                    "id": "73198388-7d45-45d6-a894-8cbaa1a80c5e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3aca9ada-0838-4901-bcc6-8c5e23c00901",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c43fef44-dea1-45bd-91aa-c0e350abb4d6",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
