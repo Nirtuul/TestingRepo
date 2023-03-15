@@ -7,13 +7,9 @@ Shader "Hidden/NewImageEffectShader"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        _Poisson ("Fishy Ratio", Range(0.01,0.49)) = 0.42
-        _LateralStrain ("Up/Down Strain", float) = 0.0
-        _ForceAppliedX("Force being applied",float ) = 0.0
-        _ForceAppliedY("Force being applied",float ) = 0.0
-        _SquashValue("This is the actual value of squashing",vector)=(0.0, 0.0, 0.0, 0.0)
-        _ScaleAmount("Arbitrary scale amount", float)=0.0
-        _SquashMagnitude("Linear squash value", float) = 0.0
+        _SquashValue("This is the actual value of squashing",vector)=(1.0, 1.0, 0.0, 0.0)
+        _SquashMagnitude("Linear squash value", float) = 1.0
+        _TimeElapsed("time since last update of info", float) = 0.0
     }
     SubShader
     {
@@ -44,14 +40,13 @@ Shader "Hidden/NewImageEffectShader"
             v2f vert (appdata v)
             {
                 v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
+                o.vertex = v.vertex;
                 o.uv = v.uv;
-                //here i was playing with the idea that if you jump something should happen to my square
-                    o.vertex.xy = Scale(o.vertex.xy);
-                    o.vertex.xy = Squash(o.vertex.xy);
-                   //o.vertex.xy = o.vertex.xy*2.0f;//StretchAndSquash(); //StretchAndSquash(); //UnityObjectToClipPos(v.vertex*float3(StretchAndSquash().xy,0));
-                   //o.vertex.zw = o.vertex.zw*3;
-                 //StretchAndSquash(o.vertex.xy);
+                
+                //o.vertex.xy = Scale(o.vertex.xy);
+                o.vertex.xy = StretchMatrixForm(o.vertex.xy);
+                
+                o.vertex = UnityObjectToClipPos(o.vertex);
                 return o;
             }
 
