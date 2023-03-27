@@ -13,7 +13,6 @@ Shader "Hidden/NewImageEffectShader"
     }
     SubShader
     {
-        // No culling or depth
         Cull Off ZWrite Off ZTest Always
 
         Pass
@@ -42,24 +41,16 @@ Shader "Hidden/NewImageEffectShader"
                 v2f o;
                 o.vertex = v.vertex;
                 o.uv = v.uv;
-                
-                //o.vertex.xy = Scale(o.vertex.xy);
                 o.vertex.xy = StretchMatrixForm(o.vertex.xy);
-                
                 o.vertex = UnityObjectToClipPos(o.vertex);
                 return o;
             }
 
             sampler2D _MainTex;
-            
-            float4 _MainTex_TexelSize;//not sure this var works the way i originally thought
 
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
-                // just invert the colors
-                //_MainTex_TexelSize.zw = StretchAndSquash();
-                //col.rgb = 1 - col.rgb;
                 return col;
             }
             ENDCG
