@@ -8,7 +8,7 @@ float _TimeElapsed;
 
 inline float2 StretchMatrixForm(inout float2 value)
 {
-    fixed squashAmountX = clamp(abs(_SquashValue.x),((abs(_SquashValue.x)) * _SquashMagnitude),_TimeElapsed/100);
+    fixed squashAmountX = clamp(abs(_SquashValue.x),abs(_SquashValue.x * _SquashMagnitude),_TimeElapsed/100);
     
    
     //Matrix for squash in the x  axis
